@@ -9,6 +9,8 @@ public class UserAddress {
         this.ipAddress = ipAddress;
     }
 
+    public UserAddress() {}
+
     public int getPort() {
         return port;
     }

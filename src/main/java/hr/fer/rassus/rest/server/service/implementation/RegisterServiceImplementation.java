@@ -15,14 +15,15 @@ public class RegisterServiceImplementation implements RegisterService {
     public RegisterServiceImplementation() {}
 
     @Override
-    public boolean register(SensorDescription description) {
-        if(!sensorsMap.containsKey(description.getUsername())) {
-            sensorsMap.put(description.getUsername(), description);
+    public int register(SensorDescription description) {
+        if(!this.sensorsMap.containsKey(description.getUsername())) {
+            this.sensorsMap.put(description.getUsername(), description);
             ServerApplication.logger.info("Registering sensor \""+ description.getUsername() + "\"");
-            return true;
+            return description.getUsername().equals(this.sensorsMap.get(description.getUsername()).getUsername()) ?
+                    0 : -1;
         } else {
             ServerApplication.logger.error("Sensor \""+ description.getUsername() + "\" is already registered");
-            return false;
+            return 1;
         }
     }
 }

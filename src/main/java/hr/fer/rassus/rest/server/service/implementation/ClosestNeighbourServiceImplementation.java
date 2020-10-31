@@ -48,7 +48,7 @@ public class ClosestNeighbourServiceImplementation implements ClosestNeighbourSe
         }
 
         SensorDescription foundSensor = activeSensors.get(closestSensor);
-        ServerApplication.logger.info("Closest neighbour of sensor \"" + username + "\" is sensor" +
+        ServerApplication.logger.info("Closest neighbour of sensor \"" + username + "\" is sensor " +
                 foundSensor + " and their distance is \"" + minimumDistance + "\"");
         return new UserAddress(foundSensor.getPort(), foundSensor.getIpAddress());
     }

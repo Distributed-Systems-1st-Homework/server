@@ -21,10 +21,10 @@ public class RegisterController {
         ServerApplication.logger.info("Received request for sensor \"" + sensorObject.getUsername()
                 + "\" registration");
 
-        boolean flag = registerService.register(sensorObject);
-        return flag ?
-                ResponseEntity.status(200).build()
-                :
-                ResponseEntity.status(400).body("Username already exists!");
+        int flag = registerService.register(sensorObject);
+
+        if(flag == 0) return ResponseEntity.status(200).build();
+        if(flag == -1) return ResponseEntity.status(500).build();
+        return ResponseEntity.status(400).build();
     }
 }

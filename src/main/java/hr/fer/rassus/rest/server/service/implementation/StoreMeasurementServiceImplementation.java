@@ -25,15 +25,14 @@ public class StoreMeasurementServiceImplementation implements StoreMeasurementSe
             return false;
         }
 
-        Float measure;
         ServerApplication.logger.info("Storing measurements for sensor \"" + measurement.getUsername() + "\"");
         if (measurementsMap.get(username) != null) {
-            measure = measurementsMap.get(username).put(parameter, averageValue);
-            return measure != null ? true : false;
+            measurementsMap.get(username).put(parameter, averageValue);
+            return Float.compare(measurementsMap.get(username).get(parameter), averageValue) == 0;
         } else {
             measurementsMap.put(username, new TreeMap<>());
-            measure = measurementsMap.get(username).put(parameter, averageValue);
-            return measure != null ? true : false;
+            measurementsMap.get(username).put(parameter, averageValue);
+            return Float.compare(measurementsMap.get(username).get(parameter), averageValue) == 0;
         }
     }
 }

@@ -1,15 +1,13 @@
 package hr.fer.rassus.rest.server.request;
 
-public class RegisterUsernameDto {
+public class UsernameDto {
     String username;
 
-    public RegisterUsernameDto(String username) {
+    public UsernameDto(String username) {
         this.username = username;
     }
 
-    public RegisterUsernameDto() {
-
-    }
+    public UsernameDto() {}
 
     public String getUsername() {
         return username;
